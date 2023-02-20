@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 var cors = require("cors");
 const auth = require("./routes/auth");
+const admin = require("./routes/admin");
 const post = require("./routes/post");
 const mongoose=require("mongoose");
 const bodyParser=require("body-parser")
@@ -35,6 +36,7 @@ mongoose
 
 //routes
 app.use("/auth", auth);
+app.use("/admin", admin);
 app.use("/post", post);
 app.get("/", (req, res) => {
   res.send("hello world");

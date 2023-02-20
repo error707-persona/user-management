@@ -1,30 +1,33 @@
 import React, {useState} from 'react'
-import { SignIn } from '../utils/SignIn'
+import { EditUser } from '../utils/EditUser'
+import { redirect } from 'react-router-dom'
 
-const Login = () => {
+const UpdateUser = () => {
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
     const [username, setusername] = useState("")
     const [role, setrole] = useState("admin")
     const handleSubmit = () => {
-        SignIn(username, email, password, role);
+       
+        // EditUser(username,email, password, role);
+        return redirect('/dashboard')
     }
   return (
     <div className='container'>
       <div className="form">
-         <input type="email" placeholder="email" onChange={(e)=>setemail(e.target.value)}/>
+        <h3>Update User</h3>
+         <input type="email" placeholder="Email" value="noble@hol.com" disabled onChange={(e)=>setemail(e.target.value)}/>
          <input type="text" placeholder="Username" onChange={(e)=>setusername(e.target.value)}/>
-        <input type="password" placeholder="password" onChange={(e)=>setpassword(e.target.value)}/>
+        <input type="password" placeholder="Password" onChange={(e)=>setpassword(e.target.value)}/>
         <select onChange={(e)=>setrole(e.target.value)}>
             <option value="admin">Admin</option>
             <option value="manager">Manager</option>
             <option value="employee">Employee</option>
         </select>
-        <button onClick={handleSubmit}>Login</button> 
+        <button type="submit" onClick={handleSubmit}>Update</button>
       </div>
-       
     </div>
   )
 }
 
-export default Login
+export default UpdateUser

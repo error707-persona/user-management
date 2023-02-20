@@ -1,17 +1,19 @@
 import React, {useState} from 'react'
-import { SignIn } from '../utils/SignIn'
+import { EditUser } from '../utils/EditUser'
 
-const Login = () => {
+const AddUser = () => {
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
     const [username, setusername] = useState("")
     const [role, setrole] = useState("admin")
     const handleSubmit = () => {
-        SignIn(username, email, password, role);
+        console.log(email, password,role)
+        EditUser(username,email, password, role);
     }
   return (
     <div className='container'>
       <div className="form">
+        <h3>Create User</h3>
          <input type="email" placeholder="email" onChange={(e)=>setemail(e.target.value)}/>
          <input type="text" placeholder="Username" onChange={(e)=>setusername(e.target.value)}/>
         <input type="password" placeholder="password" onChange={(e)=>setpassword(e.target.value)}/>
@@ -20,11 +22,10 @@ const Login = () => {
             <option value="manager">Manager</option>
             <option value="employee">Employee</option>
         </select>
-        <button onClick={handleSubmit}>Login</button> 
+        <button type="submit" onClick={handleSubmit}>Add User</button>
       </div>
-       
     </div>
   )
 }
 
-export default Login
+export default AddUser

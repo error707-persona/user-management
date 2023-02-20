@@ -1,25 +1,37 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { GetUsers } from "../utils/GetUsers";
 const Dashboard = () => {
    const data = GetUsers().data;
+   console.log(data);
+   
   return (
-    <div className="dashboard">
+    <div className="container">
+      
       <table className="table">
         <tr>
-          {/* <th>Username</th> */}
-          {/* <th>Name</th> */}
+          <td> <NavLink to="/addUser">Add</NavLink></td>
+        </tr>
+       
+        <tr>
+        
           <th>Email</th>
-          <th>Password</th>
+          <th>Username</th>
           <th>Role</th>
+          
+          <th>Options</th>
         </tr>
 
         {data?.map((item) => {
-          <tr>
+         return ( <tr>
             
             <td>{item.email}</td>
-            <td>{item.password}</td>
+            <td>{item.username}</td>
+            
             <td>{item.role}</td>
-          </tr>
+            <td>&nbsp;&nbsp;<button>Delete</button>&nbsp;&nbsp;<NavLink to="/update">Edit</NavLink></td>
+
+          </tr>)
         })}
       </table>
     </div>

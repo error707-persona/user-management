@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-import Login  from "../pages/Login";
+
 const SignIn = (email, password, role) => {
 // const navigate = useNavigate();
   var data = false;
@@ -13,16 +13,18 @@ const SignIn = (email, password, role) => {
       role: role,
     })
     .then((res) => {
-        // console.log(res)
-        alert("user authenticated")
+        console.log(res);
+        if (res && res.data.user.length>0){
+          alert("user authenticated")
+        }
+        // 
        
-        // navigate('/login', {replace:true});
 
     
     })
     .catch((err) => {
       console.log(err);
-      alert("Invalid email or password")
+      alert("Invalid email or password or designation")
     });
 
     return data;

@@ -14,7 +14,7 @@ router.post("/signup",[
         })
 
 ], async (req,res)=>{
-    const {email, password, role} = req.body;
+    const {username, email, password, role} = req.body;
 
     //validate the input
     const errors = validationResult(req);
@@ -26,15 +26,17 @@ router.post("/signup",[
 
     //validate user doesnt already exists
    const user = await userModel.find({email:email})
-
+   console.log(user)
    if(user.email===email){
     return res.status(400).json(user)
    }
+   
 
    let hashedPassword = await bcrypt.hash(password, 10);
    const newuser = await new userModel(
-    {
-        email,
+    {   
+        username:username,
+        email:email,
         password:hashedPassword,
         role:role
        }
@@ -65,22 +67,18 @@ router.post("/login", async (req,res)=>{
     //     return user.email === email
     // });
     let hashedPassword = await bcrypt.hash(password, 10);
-    let findUser = await userModel.find({email:email, password:hashedPassword, role:role})
-
-    if (findUser!=[]){
+    let findUser = await userModel.find({email:email, role:role})
+    console.log(findUser)
+    if (findUser.length>0){
         const token = await jwt.sign({
             email
            }, "dhoei7w72bd83290b4udsuen",{
             expiresIn:3600000
            })
-        //    let isMatch = await bcrypt.compare(password, findUser.password);
-
-        //    if (!isMatch){
-        //        return res.status(400);
-        //    }
-       
+           
+           
         // console.log(findUser,"finduser", token)
-            return res.json({token:token});
+            return res.json({token:token, user:findUser});
     } else {
         return res.status(400).json({
             "errors": "Invalid credentials"
