@@ -1,9 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { DeleteUser } from "../utils/DeleteUser";
 import { GetUsers } from "../utils/GetUsers";
 const Dashboard = () => {
    const data = GetUsers().data;
    console.log(data);
+  
    
   return (
     <div className="container">
@@ -29,7 +31,7 @@ const Dashboard = () => {
             <td>{item.username}</td>
             
             <td>{item.role}</td>
-            <td>&nbsp;&nbsp;<button>Delete</button>&nbsp;&nbsp;<NavLink to="/update">Edit</NavLink></td>
+            <td>&nbsp;&nbsp;<button onClick={DeleteUser(item.email)}>Delete</button>&nbsp;&nbsp;<NavLink to="/update">Edit</NavLink></td>
 
           </tr>)
         })}

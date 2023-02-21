@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { redirect } from "react-router-dom";
 
 
 const SignUp = (username, email, password, role) => {
@@ -15,7 +16,8 @@ const SignUp = (username, email, password, role) => {
     })
     .then((res) => {
         console.log(res)
-        alert("registered success")
+        alert("User added successfully")
+        // redirect("/dashboard")
         
     })
     .catch((err) => {

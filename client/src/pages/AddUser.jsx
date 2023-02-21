@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { EditUser } from '../utils/EditUser'
+import {SignUp} from "../utils/SignUp"
 
 const AddUser = () => {
     const [email, setemail] = useState("")
@@ -7,8 +7,8 @@ const AddUser = () => {
     const [username, setusername] = useState("")
     const [role, setrole] = useState("admin")
     const handleSubmit = () => {
-        console.log(email, password,role)
-        EditUser(username,email, password, role);
+        // console.log(email, password,role)
+        SignUp(username,email, password, role);
     }
   return (
     <div className='container'>

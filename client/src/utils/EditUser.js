@@ -8,14 +8,15 @@ const EditUser = (username, email, password, role) => {
   var data = false;
     console.log(email, password, role, "inside")
   axios
-    .post(`http://localhost:3001/auth/edit`, {
+    .post(`http://localhost:3001/admin/edit`, {
       username:username,
-      email: email,
+      email: "noble@hol.com",
       password: password,
       role: role,
     })
     .then((res) => {
         console.log(res);
+        alert("updated user")
         
         
     })

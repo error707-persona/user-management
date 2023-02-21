@@ -9,8 +9,8 @@ const UpdateUser = () => {
     const [role, setrole] = useState("admin")
     const handleSubmit = () => {
        
-        // EditUser(username,email, password, role);
-        return redirect('/dashboard')
+        EditUser(username,email, password, role);
+        // return redirect('/dashboard')
     }
   return (
     <div className='container'>

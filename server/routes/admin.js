@@ -5,10 +5,12 @@ const bcrypt = require("bcrypt")
 const userModel = require("../models/userModel")
 
 router.get("/delete", async (req,res)=>{
+    const {email} = req.body;
+
+    // let hashedPassword = await bcrypt.hash(password, 10);
+    let userDelete = await userModel.deleteOne({email:email});
     
-    const allUsers = await userModel.find();
-   
-    res.json(allUsers);
+    return res.json({user:userDelete});
 })
 
 router.post("/edit", async (req,res)=>{
