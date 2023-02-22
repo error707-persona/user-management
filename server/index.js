@@ -4,6 +4,7 @@ var cors = require("cors");
 const auth = require("./routes/auth");
 const admin = require("./routes/admin");
 const post = require("./routes/post");
+const profile = require("./routes/manager");
 const mongoose=require("mongoose");
 const bodyParser=require("body-parser")
 
@@ -37,6 +38,7 @@ mongoose
 //routes
 app.use("/auth", auth);
 app.use("/admin", admin);
+app.use("/profile", profile);
 app.use("/post", post);
 app.get("/", (req, res) => {
   res.send("hello world");

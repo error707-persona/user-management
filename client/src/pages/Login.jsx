@@ -12,6 +12,7 @@ const Login = () => {
   return (
     <div className='container'>
       <div className="form">
+        <h3>Login</h3>
          <input type="email" placeholder="email" onChange={(e)=>setemail(e.target.value)}/>
          <input type="text" placeholder="Username" onChange={(e)=>setusername(e.target.value)}/>
         <input type="password" placeholder="password" onChange={(e)=>setpassword(e.target.value)}/>

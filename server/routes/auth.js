@@ -3,7 +3,8 @@ const {check, validationResult} = require("express-validator");
 const {users} = require("../db")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken");
-const userModel = require("../models/userModel")
+const userModel = require("../models/userModel");
+const checkAuth = require("../middleware/checkAuth");
 
 router.post("/signup",[
     check("email", "Pleaase provide a valid email")
