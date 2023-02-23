@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { redirect } from 'react-router-dom'
 import { SignUp } from '../utils/SignUp'
 
 const Register = () => {
@@ -7,8 +8,13 @@ const Register = () => {
     const [username, setusername] = useState("")
     const [role, setrole] = useState("admin")
     const handleSubmit = () => {
-        console.log(email, password,role)
-        SignUp(username,email, password, role);
+      
+        const current_role = SignUp(username,email, password, role);
+        
+        if (current_role==="admin") redirect("/dashboard")
+        else if (current_role==="manager") redirect("/employees")
+        else redirect("/employee")
+
     }
   return (
     <div className='container'>

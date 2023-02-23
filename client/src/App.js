@@ -23,6 +23,7 @@ function App() {
           <Route path="/employee" element={<Employee />} />
           <Route path="/employees" element={<Employees />} />
           <Route path="/manager" element={<Manager />} />
+         
         </Routes>
       </BrowserRouter>
     </AppState>

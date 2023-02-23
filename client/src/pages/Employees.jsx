@@ -1,30 +1,45 @@
 import React from "react";
 import { GetEmployees } from "../utils/GetEmployees";
+import { NavLink } from "react-router-dom";
+import { DeleteUser } from "../utils/DeleteUser";
+
 const Employees = () => {
   const data = GetEmployees();
-  console.log(data.data);
+  
+  const handleView = () => {
+    
+  }
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        height: "100vh",
-      }}
-    >
-      <h3>Employee details </h3>
+    <div className="container">
+    <table className="table">
+     
+
+      <tr>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Role</th>
+
+        <th>Options</th>
+      </tr>
+
       {data.data?.map((item) => {
         return (
-          <div style={{ padding: 10 }}>
-            <div>email: {item.email}</div>
-            <div>username: {item.username}</div>
+          <tr>
+            <td>{item.email}</td>
+            <td>{item.username}</td>
 
-            <div>role: {item.role}</div>
-          </div>
+            <td>{item.role}</td>
+            <td>
+              &nbsp;&nbsp;
+              <button onClick={() => DeleteUser(item.email)}>Delete</button>
+              &nbsp;&nbsp;<NavLink to="/update" state={{email:item.email}}>Edit</NavLink> &nbsp;&nbsp;
+              <button onClick={handleView}>View</button>
+            </td>
+          </tr>
         );
       })}
-    </div>
+    </table>
+  </div>
   );
 };
 

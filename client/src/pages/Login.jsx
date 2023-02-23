@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { redirect } from 'react-router-dom'
 import { SignIn } from '../utils/SignIn'
 
 const Login = () => {
@@ -8,6 +9,7 @@ const Login = () => {
     const [role, setrole] = useState("admin")
     const handleSubmit = () => {
         SignIn(username, email, password, role);
+        redirect('/employee')
     }
   return (
     <div className='container'>

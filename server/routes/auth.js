@@ -51,7 +51,7 @@ router.post("/signup",[
     expiresIn:3600000
    })
 
-    res.json({token:token});
+    res.json({token:token, role:role});
 })
 
 
@@ -64,10 +64,8 @@ router.get("/all", async (req,res)=>{
 router.post("/login", async (req,res)=>{
     const {password, email, role} = req.body;
 
-    // let user = users.find((user) => {
-    //     return user.email === email
-    // });
-    let hashedPassword = await bcrypt.hash(password, 10);
+   
+    // let hashedPassword = await bcrypt.hash(password, 10);
     let findUser = await userModel.find({email:email, role:role})
     console.log(findUser)
     if (findUser.length>0){
@@ -78,24 +76,14 @@ router.post("/login", async (req,res)=>{
            })
            
            
-        // console.log(findUser,"finduser", token)
-            return res.json({token:token, user:findUser});
+            return res.json({token:token, user:findUser, role:role});
     } else {
         return res.status(400).json({
             "errors": "Invalid credentials"
                 
         })
     }
-    // if (!user){
-    //     return res.status(400).json({
-    //         "errors":[
-    //             {
-    //                 "msg":"Invalid credentials"
-    //             }
-    //         ]
-    //     })
-    // }
-
+ 
     
     
     
