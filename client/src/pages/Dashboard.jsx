@@ -9,7 +9,7 @@ const Dashboard = () => {
 
 
   const handleView = () => {
-    redirect("/employee")
+    window.location.href = "/employee"
   }
 
 
