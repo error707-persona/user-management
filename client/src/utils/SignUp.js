@@ -1,7 +1,8 @@
 import axios from "axios";
-import { useState } from "react";
+import { useContext } from "react";
+import AppContext from "../context/AppContext";
 const SignUp = (username, email, password, role) => {
-  // const [data, setdata] = useState("");
+  const context = useContext(AppContext);
   axios
     .post(`http://localhost:3001/auth/signup`, {
       username: username,
@@ -11,7 +12,7 @@ const SignUp = (username, email, password, role) => {
     })
     .then((res) => {
       console.log(res.data);
-      // setdata(res.data.role);
+      context.set(res.data.role);
       alert("User added successfully");
 
       if (res.data.role === "admin")
@@ -30,7 +31,7 @@ const SignUp = (username, email, password, role) => {
       alert("Invalid email or password");
     });
 
-    // return data;
+   
 };
 
 export { SignUp };

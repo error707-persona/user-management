@@ -16,6 +16,7 @@ const SignIn = (email, password, role) => {
         alert("user authenticated");
       
       }
+      
     })
     .catch((err) => {
       console.log(err);

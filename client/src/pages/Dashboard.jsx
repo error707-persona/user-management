@@ -1,19 +1,11 @@
-import React,{useContext} from "react";
-import { Navigate, NavLink, redirect } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
 import { DeleteUser } from "../utils/DeleteUser";
 import { GetUsers } from "../utils/GetUsers";
-import UpdateUser from "../pages/UpdateUser"
-import AppContext from "../context/AppContext";
+
+
 const Dashboard = () => {
   const data = GetUsers().data;
-
-
-  const handleView = () => {
-    window.location.href = "/employee"
-  }
-
-
-
 
   return (
     <div className="container">
@@ -43,8 +35,14 @@ const Dashboard = () => {
               <td>
                 &nbsp;&nbsp;
                 <button onClick={() => DeleteUser(item.email)}>Delete</button>
-                &nbsp;&nbsp;<NavLink to="/update" state={{email:item.email}}>Edit</NavLink> &nbsp;&nbsp;
-                <button onClick={handleView}>View</button>
+                &nbsp;&nbsp;
+                <NavLink to="/update" state={{ email: item.email }}>
+                  Edit
+                </NavLink>{" "}
+                &nbsp;&nbsp;
+                <NavLink to="/employee" state={{ email: item.email, username:item.username, role:item.role }}>
+                  View
+                </NavLink>
               </td>
             </tr>
           );

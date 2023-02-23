@@ -33,7 +33,9 @@ const Employees = () => {
               &nbsp;&nbsp;
               <button onClick={() => DeleteUser(item.email)}>Delete</button>
               &nbsp;&nbsp;<NavLink to="/update" state={{email:item.email}}>Edit</NavLink> &nbsp;&nbsp;
-              <button onClick={handleView}>View</button>
+              <NavLink to="/employee" state={{ email: item.email, username:item.username, role:item.role }}>
+                  View
+                </NavLink>
             </td>
           </tr>
         );

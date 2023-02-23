@@ -1,17 +1,17 @@
 import React from "react";
-import { GetEmployee } from "../utils/GetEmployee";
 
-const Employee = ({email}) => {
-    console.log(email, "email")
-//   const data = GetEmployee(email);
+import { useLocation } from "react-router-dom";
+const Employee = () => {
+  const { state } = useLocation();
+  const {email, username, role} = state;
   return (
     <div>
-      {/* <div style={{ padding: 10 }}>
-        <div>email: {data.email}</div>
-        <div>username: {data.username}</div>
+        <div style={{ padding: 10 }}>
+            <div>email: {email}</div>
+            <div>username: {username}</div>
 
-        <div>role: {data.role}</div>
-      </div> */}
+            <div>role: {role}</div>
+        </div>
     </div>
   );
 };
